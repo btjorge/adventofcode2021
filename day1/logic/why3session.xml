@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="6">
+<prover id="0" name="Z3" version="4.8.6" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="2" name="CVC4" version="1.7" timelimit="5" steplimit="0" memlimit="1000"/>
+<file format="whyml" proved="true">
+<path name=".."/><path name="logic.mlw"/>
+<theory name="Logic" proved="true">
+ <goal name="num_inc&#39;vc" expl="VC for num_inc" proved="true">
+ <proof prover="0"><result status="valid" time="0.04" steps="199507"/></proof>
+ <proof prover="1"><result status="valid" time="3.24" steps="4686"/></proof>
+ <proof prover="2"><result status="valid" time="0.54" steps="141987"/></proof>
+ </goal>
+ <goal name="num_three_sliding_sum_inc&#39;vc" expl="VC for num_three_sliding_sum_inc" proved="true">
+ <proof prover="0"><result status="valid" time="0.10" steps="490767"/></proof>
+ <proof prover="1"><result status="valid" time="2.54" steps="4114"/></proof>
+ <proof prover="2"><result status="valid" time="0.83" steps="212486"/></proof>
+ </goal>
+</theory>
+</file>
+</why3session>

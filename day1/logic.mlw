@@ -1,0 +1,49 @@
+module Logic
+
+  use int.Int
+  use int.NumOf
+  use ref.Refint
+  use array.Array
+
+  (* number of i, n <= i < m such that a[i+1] a[i] *)
+  function num_inc_between (a : array int) (n m : int) : int =
+    numof (fun i -> a[i+1] > a[i]) n m
+
+  function num_inc (a : array int) : int =
+    num_inc_between a 0 (length a - 1)
+
+  let num_inc (a : array int) : int
+    ensures { result = num_inc a }
+  =
+    let ref res = 0 in
+
+    for i = 0 to length a - 2 do
+      invariant { res = num_inc_between a 0 i }
+
+      if a[i+1] > a[i] then
+        res += 1;
+    done;
+
+    res
+
+  function num_three_sliding_sum_inc_between (a : array int) (n m : int) : int =
+    numof (fun i -> a[i+1] + a[i+2] + a[i+3] > a[i] + a[i+1] + a[i+2]) n m
+
+  function num_three_sliding_sum_inc (a : array int) : int =
+    num_three_sliding_sum_inc_between a 0 (length a - 3)
+
+  let num_three_sliding_sum_inc (a : array int) : int
+    ensures { result = num_three_sliding_sum_inc a }
+  =
+    let ref res = 0 in
+
+    for i = 0 to length a - 4 do
+      invariant { res = num_three_sliding_sum_inc_between a 0 i }
+
+      if a[i+3] > a[i] then
+        res += 1;
+    done;
+
+    res
+
+end

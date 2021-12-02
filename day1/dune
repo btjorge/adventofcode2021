@@ -1,0 +1,16 @@
+(executable
+ (public_name day1)
+ (name main)
+ (flags -w -3)
+ (libraries zarith))
+
+(rule
+ (target logic.ml)
+ (deps logic.mlw)
+ (mode promote)
+ (action (run why3 extract -D ocaml64 logic.mlw -o logic.ml)))
+
+;(rule
+; (alias replay)
+; (deps logic.mlw logic/why3session.xml)
+; (action (run why3 replay logic)))
